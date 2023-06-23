@@ -1,28 +1,17 @@
+const fs = require("fs");
 const pptxgen = require("pptxgenjs");
 
 // Create a new presentation
 const ppt = new pptxgen();
 
-// Define the text elements
-const texts = [
-  "Hello,",
-  "PowerPoint!",
-  "Welcome to",
-  "pptxgenjs!",
-  "This",
-  "is",
-  "a",
-  "slide.",
-  "Another",
-  "slide",
-  "begins",
-  "here.",
-];
+// Read the text elements from a file
+const filePath = "text_file.txt";
+const texts = fs.readFileSync(filePath, "utf8").split("\n").map((text) => text.trim());
 
 // Set the initial coordinates and height for the first text element
 let x = 1;
 let y = 1;
-const height = 0.5;
+const height = 0.2;
 const maxTextsPerSlide = 4;
 
 // Add the text elements to slides
